@@ -1,0 +1,248 @@
+//https://github.com/Wifx/gonetworkmanager/blob/377c54056d4a90156746a3977aa2d05bb19d860e/NetworkManager.go#L610
+
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RxBytes":{},"TxBytes":{}},[]],"Sequence":9}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RxBytes":{},"TxBytes":{}},[]],"Sequence":10}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RefreshRateMs":{}},[]],"Sequence":11},
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RefreshRateMs":{}},[]],"Sequence":12}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"TxBytes":{}},[]],"Sequence":13}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Wireless",{"LastScan":{}},[]],"Sequence":14}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/AccessPoint/112","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.AccessPoint",{"LastSeen":{},"Strength":{}},[]],"Sequence":15}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/AccessPoint/113","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.AccessPoint",{"LastSeen":{}},[]],"Sequence":16}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/AccessPoint/98","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.AccessPoint",{"LastSeen":{},"Strength":{}},[]],"Sequence":17}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/AccessPoint/114","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.AccessPoint",{"LastSeen":{},"Strength":{}},[]],"Sequence":18}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/AccessPoint/116","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.AccessPoint",{"LastSeen":{},"Strength":{}},[]],"Sequence":19}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RxBytes":{},"TxBytes":{}},[]],"Sequence":20}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/AccessPoint/98","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.AccessPoint",{"Strength":{}},[]],"Sequence":21}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RxBytes":{},"TxBytes":{}},[]],"Sequence":22}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RxBytes":{},"TxBytes":{}},[]],"Sequence":23}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RxBytes":{},"TxBytes":{}},[]],"Sequence":24}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RxBytes":{},"TxBytes":{}},[]],"Sequence":25}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"TxBytes":{}},[]],"Sequence":26}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RxBytes":{},"TxBytes":{}},[]],"Sequence":27}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager",{"ActiveConnections":{}},[]],"Sequence":28}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"State":{}},[]],"Sequence":29}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"StateReason":{}},[]],"Sequence":30}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.NetworkManager.Device.StateChanged","Body":[110,100,60],"Sequence":31}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/15","Name":"org.freedesktop.NetworkManager.Connection.Active.StateChanged","Body":[3,0],"Sequence":32}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/15","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Connection.Active",{"State":{}},[]],"Sequence":33}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager",{"State":{}},[]],"Sequence":34}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.NetworkManager.StateChanged","Body":[30],"Sequence":35}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/15","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Connection.Active",{"Ip4Config":{}},[]],"Sequence":36}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/15","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Connection.Active",{"Dhcp4Config":{}},[]],"Sequence":37}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/15","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Connection.Active",{"Ip6Config":{}},[]],"Sequence":38}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/15","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Connection.Active",{"Dhcp6Config":{}},[]],"Sequence":39}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/IP4Config/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.IP4Config",{"RouteData":{}},[]],"Sequence":40}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RxBytes":{},"TxBytes":{}},[]],"Sequence":41}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"InterfaceFlags":{}},[]],"Sequence":42}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RefreshRateMs":{}},[]],"Sequence":43}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Statistics",{"RefreshRateMs":{}},[]],"Sequence":44}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"Dhcp4Config":{}},[]],"Sequence":45}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/15","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Connection.Active",{"Dhcp4Config":{}},[]],"Sequence":46}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Wireless",{"ActiveAccessPoint":{}},[]],"Sequence":47}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"HwAddress":{}},[]],"Sequence":48}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Wireless",{"HwAddress":{}},[]],"Sequence":49}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/DnsManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.DnsManager",{"Configuration":{}},[]],"Sequence":50}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/IP6Config/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.IP6Config",{"DnsPriority":{}},[]],"Sequence":52}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/IP4Config/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.IP4Config",{"DnsPriority":{},"NameserverData":{},"Nameservers":{}},[]],"Sequence":51}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"Metered":{}},[]],"Sequence":53}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager",{"Metered":{}},[]],"Sequence":54}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/15","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Connection.Active",{"Default":{}},[]],"Sequence":55}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"ActiveConnection":{}},[]],"Sequence":56}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"State":{}},[]],"Sequence":57}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"StateReason":{}},[]],"Sequence":58}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.NetworkManager.Device.StateChanged","Body":[30,110,60],"Sequence":59}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager",{"ActiveConnections":{}},[]],"Sequence":60}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/15","Name":"org.freedesktop.NetworkManager.Connection.Active.StateChanged","Body":[4,3],"Sequence":61}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/15","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Connection.Active",{"State":{}},[]],"Sequence":62}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager",{"State":{}},[]],"Sequence":63}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.NetworkManager.StateChanged","Body":[20],"Sequence":64}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/15","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Connection.Active",{"Devices":{}},[]],"Sequence":65}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager",{"PrimaryConnection":{}},[]],"Sequence":66}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager",{"PrimaryConnectionType":{}},[]],"Sequence":67}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"IpInterface":{}},[]],"Sequence":68}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"Ip6Connectivity":{}},[]],"Sequence":69}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/IP6Config/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.IP6Config",{"AddressData":{},"Addresses":{},"RouteData":{},"Routes":{}},[]],"Sequence":71}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/IP4Config/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.IP4Config",{"AddressData":{},"Addresses":{},"Gateway":{},"RouteData":{},"Routes":{}},[]],"Sequence":70}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager",{"ActiveConnections":{}},[]],"Sequence":72}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"ActiveConnection":{}},[]],"Sequence":73}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"State":{}},[]],"Sequence":74}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager",{"ActiveConnections":{}},[]],"Sequence":77}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"StateReason":{}},[]],"Sequence":75}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.NetworkManager.Device.StateChanged","Body":[40,30,0],"Sequence":76}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/16","Name":"org.freedesktop.NetworkManager.Connection.Active.StateChanged","Body":[1,0],"Sequence":78}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/ActiveConnection/16","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Connection.Active",{"State":{}},[]],"Sequence":79}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager",{"State":{}},[]],"Sequence":80}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.NetworkManager.StateChanged","Body":[40],"Sequence":81}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager",{"ActivatingConnection":{}},[]],"Sequence":82}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Wireless",{"Mode":{}},[]],"Sequence":83}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"HwAddress":{}},[]],"Sequence":84}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Wireless",{"HwAddress":{}},[]],"Sequence":85}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device.Wireless",{"ActiveAccessPoint":{}},[]],"Sequence":86}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"State":{}},[]],"Sequence":87}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"StateReason":{}},[]],"Sequence":88}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.NetworkManager.Device.StateChanged","Body":[50,40,0],"Sequence":89}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"State":{}},[]],"Sequence":90}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"StateReason":{}},[]],"Sequence":91}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.NetworkManager.Device.StateChanged","Body":[60,50,0],"Sequence":92}
+{"Sender":":1.8","Path":"/org/freedesktop/NetworkManager/Devices/3","Name":"org.freedesktop.DBus.Properties.PropertiesChanged","Body":["org.freedesktop.NetworkManager.Device",{"Ip4Connectivity":{}},[]],"Sequence":93}
+
+
+
+
+
+
+
+
+
+
+{
+  "AccessPoints": [
+    {
+      "Flags": 1,
+      "Frequency": 2462,
+      "HWAddress": "A4:D4:B2:8C:B8:8B",
+      "LastSeen": 11657,
+      "MaxBitrate": 130000,
+      "Mode": "Nm80211ModeInfra",
+      "RSNFlags": 332,
+      "SSID": "DRILLER",
+      "Strength": 78,
+      "WPAFlags": 332
+    }
+  ],
+  "ActiveAccessPoint": {
+    "Flags": 1,
+    "Frequency": 2462,
+    "HWAddress": "A4:D4:B2:8C:B8:8B",
+    "LastSeen": 11657,
+    "MaxBitrate": 130000,
+    "Mode": "Nm80211ModeInfra",
+    "RSNFlags": 332,
+    "SSID": "DRILLER",
+    "Strength": 78,
+    "WPAFlags": 332
+  },
+  "AvailableConnections": [
+    {
+      "802-11-wireless": {
+        "mac-address-blacklist": [],
+        "mode": "infrastructure",
+        "security": "802-11-wireless-security",
+        "seen-bssids": [
+          "A4:D4:B2:8C:B8:8B"
+        ],
+        "ssid": "RFJJTExFUg=="
+      },
+      "802-11-wireless-security": {
+        "auth-alg": "open",
+        "key-mgmt": "wpa-psk",
+        "leap-password-flags": 1,
+        "psk-flags": 1,
+        "wep-key-flags": 1
+      },
+      "connection": {
+        "id": "DRILLER",
+        "interface-name": "wlp4s0",
+        "permissions": [
+          "user:nike:"
+        ],
+        "timestamp": 1684513626,
+        "type": "802-11-wireless",
+        "uuid": "d874e5c1-dd4a-430b-881b-0be860b1e7c1"
+      },
+      "ipv4": {
+        "address-data": null,
+        "addresses": [],
+        "dns-search": [],
+        "method": "auto",
+        "route-data": null,
+        "routes": []
+      },
+      "ipv6": {
+        "address-data": null,
+        "addresses": [],
+        "dns-search": [],
+        "method": "auto",
+        "route-data": null,
+        "routes": []
+      },
+      "proxy": {}
+    }
+  ],
+  "Bitrate": 72200,
+  "DHCP4Config": {
+    "Options": {
+      "broadcast_address": "192.168.8.255",
+      "dhcp_client_identifier": "01:34:7d:f6:75:1f:5c",
+      "dhcp_lease_time": "86400",
+      "dhcp_server_identifier": "192.168.8.1",
+      "domain_name_servers": "192.168.8.1",
+      "expiry": "1684600026",
+      "host_name": "Steam",
+      "interface_mtu": "1500",
+      "ip_address": "192.168.8.117",
+      "next_server": "192.168.8.1",
+      "requested_broadcast_address": "1",
+      "requested_domain_name": "1",
+      "requested_domain_name_servers": "1",
+      "requested_domain_search": "1",
+      "requested_host_name": "1",
+      "requested_interface_mtu": "1",
+      "requested_ms_classless_static_routes": "1",
+      "requested_nis_domain": "1",
+      "requested_nis_servers": "1",
+      "requested_ntp_servers": "1",
+      "requested_rfc3442_classless_static_routes": "1",
+      "requested_root_path": "1",
+      "requested_routers": "1",
+      "requested_static_routes": "1",
+      "requested_subnet_mask": "1",
+      "requested_time_offset": "1",
+      "requested_wpad": "1",
+      "routers": "192.168.8.1",
+      "subnet_mask": "255.255.255.0"
+    }
+  },
+  "DeviceType": "NmDeviceTypeWifi",
+  "HwAddress": "34:7D:F6:75:1F:5C",
+  "IP interface": "wlp4s0",
+  "IP4Config": {
+    "Addresses": [
+      {
+        "Address": "192.168.8.117",
+        "Prefix": 24
+      }
+    ],
+    "Domains": [],
+    "Nameservers": [
+      {
+        "Address": ""
+      },
+      {
+        "Address": "192.168.8.1"
+      }
+    ],
+    "Routes": [
+      {
+        "Destination": "192.168.8.0",
+        "Prefix": 24,
+        "NextHop": "",
+        "Metric": 88,
+        "AdditionalAttributes": null
+      },
+      {
+        "Destination": "0.0.0.0",
+        "Prefix": 0,
+        "NextHop": "192.168.8.1",
+        "Metric": 88,
+        "AdditionalAttributes": null
+      }
+    ]
+  },
+  "Interface": "wlp4s0",
+  "LastScan": 11660283,
+  "Mode": 2,
+  "PermHwAddress": "34:7D:F6:75:1F:5C",
+  "State": "NmDeviceStateActivated",
+  "WirelessCapabilities": 10239
+}
