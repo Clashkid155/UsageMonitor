@@ -1,0 +1,100 @@
+package usageTracker
+
+import (
+	"database/sql"
+	"errors"
+	"fmt"
+	"github.com/Wifx/gonetworkmanager/v3"
+	"log"
+	"os"
+	"os/signal"
+	"syscall"
+)
+
+var sqlDb *sql.DB
+
+func init() {
+	var err error
+	DeviceNetworkInfo.Nm, err = gonetworkmanager.NewNetworkManager()
+	if err != nil {
+		log.Println(err.Error())
+		os.Exit(1)
+	}
+	sqlDb, err = sql.Open("sqlite3", "./wifi_usage_tracker.sqlite")
+	if err != nil {
+		log.Println(err)
+	}
+
+}
+
+// Get the device interface name first then use it to get the network Usage.
+func main() {
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+	deviceInterface, err := DeviceNetworkInfo.GetWifiDevice()
+	if err != nil {
+		return
+	}
+	DeviceNetworkInfo.WifiInterfaceName = deviceInterface
+	wifiName, err := DeviceNetworkInfo.GetWifiName()
+	if err != nil {
+		return
+	}
+
+	err = CreateTable()
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Println("CONNECTED TO:", wifiName)
+
+	ssid, err := GetUsageBySsid(sqlDb, &DeviceNetworkInfo.Usage)
+	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			log.Println(err)
+			return
+		}
+
+	}
+	fmt.Println("Exist sql db:", ssid, "Error:", err)
+
+	state, err := DeviceNetworkInfo.Nm.State()
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Println(DeviceNetworkInfo.Usage, state)
+
+	DeviceNetworkInfo.SetUsage()
+
+	
+	ch := make(chan os.Signal, 1)
+	signal.Notify(ch, syscall.SIGINT, syscall.SIGTERM, syscall.SIGKILL)
+	
+
+	for {
+		select {
+		case <-ch:
+			DeviceNetworkInfo.Nm.Unsubscribe()
+			fmt.Println("\nKilling WiFi Usage Tracker")
+			return
+		case sub := <-DeviceNetworkInfo.Nm.Subscribe():
+			//  https://networkmanager.dev/docs/api/latest/spec.html Provided all the help I needed
+			//  By monitoring the Device state change, we can get the various states the interface has taken.
+			//  Details on sub.Body https://networkmanager.dev/docs/api/latest/gdbus-org.freedesktop.NetworkManager.Device.html
+
+			if sub.Name == fmt.Sprint(gonetworkmanager.DevicePropertyState, "Changed") && sub.Body[0] == uint32(100) {
+
+				wifiName, err = DeviceNetworkInfo.GetWifiName()
+				if err != nil {
+					log.Println(err)
+				}
+
+				fmt.Println("New SSID:", wifiName)
+				if err != nil {
+					log.Println(err)
+				}
+
+			}
+		}
+
+	}
+
+}
