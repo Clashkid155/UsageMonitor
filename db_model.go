@@ -1,4 +1,4 @@
-package main
+package usageTracker
 
 import (
 	"encoding/json"
@@ -19,7 +19,7 @@ type Details struct {
 
 type saveType struct {
 	Date       string `clover:"date" json:"date"`
-	TotalUsage uint64 `clover:"usage" json:"usage"`
+	TotalUsage uint64 `clover:"Usage" json:"Usage"`
 }
 
 func (r SaveValues) toMap() map[string]any {

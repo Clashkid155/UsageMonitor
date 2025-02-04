@@ -1,4 +1,4 @@
-module UsageMonitor
+module github.com/clashkid155/usage-monitor
 
 go 1.23.4
 
