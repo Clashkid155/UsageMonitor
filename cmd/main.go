@@ -125,9 +125,15 @@ func RunUntilInterrupt(network *usageTracker.NetworkInfo, ticker *time.Ticker, e
 			return
 
 		case <-ticker.C:
-			fmt.Println("It ran after 10 minutes.")
-			RefreshDbUsage(network)
+			nmState, err := network.Nm.State()
+			if err != nil {
+				log.Println(err)
+			}
 
+			if nmState == gonetworkmanager.NmStateConnectedGlobal {
+				fmt.Println("It ran after 10 minutes.")
+				RefreshDbUsage(network)
+			}
 		case sub := <-network.Nm.Subscribe():
 			//  https://networkmanager.dev/docs/api/latest/spec.html Provided all the help I needed
 			//  By monitoring the Device state change, we can get the various states the interface has taken.
