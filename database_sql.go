@@ -27,7 +27,7 @@ func CreateTable(db *sql.DB) error {
 	const tableQuery = `create table if not exists wifi_usage
 (
     id INTEGER primary key autoincrement,
-    date DATE not null,
+    date TEXT not null,
     ssid TEXT not null,
     upload_usage INTEGER not null,
     download_usage INTEGER not null
