@@ -85,6 +85,30 @@ func GetUsageBySsid(db *sql.DB, usage *Usage) (Usage, error) {
 	return dbUsage, nil
 }
 
+func GetAllUsage(db *sql.DB) ([]Usage, error) {
+	allUsageQuery := `select date, ssid, upload_usage, download_usage from wifi_usage;`
+	dbUsage := []Usage{}
+	rows, err := db.Query(allUsageQuery)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var date string
+	for rows.Next() {
+		var localUsage Usage
+		if err = rows.Scan(&localUsage.Date, &localUsage.SSID, &localUsage.Upload, &localUsage.Download); err != nil {
+			return nil, err
+		}
+		fmt.Println("All db date:", date)
+		localUsage.TotalUsage = localUsage.Upload + localUsage.Download
+		dbUsage = append(dbUsage, localUsage)
+	}
+	if err = rows.Err(); err != nil {
+		return nil, err
+	}
+	return dbUsage, nil
+}
+
 // Return time in 02-02-2025
 func getFormattedTime() string {
 	return time.Now().Format("02-01-2006")
