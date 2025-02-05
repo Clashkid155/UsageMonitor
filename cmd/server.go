@@ -9,11 +9,36 @@ import (
 )
 
 func getUsageInfo(w http.ResponseWriter, res *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 	allUsage, err := usageTracker.GetAllUsage(sqlDb)
 	if err != nil {
 		log.Println(err)
-		http.Error(w, "Error getting usage", http.StatusInternalServerError)
+		w.WriteHeader(http.StatusForbidden)
+		_ = response(&JsonResponse{
+			Message: "failed",
+			Error:   err.Error(),
+		}, w)
+		return
 	}
+
+	err = json.NewEncoder(w).Encode(allUsage)
+	err = response(&JsonResponse{
+		Message: "success",
+		Data:    allUsage,
+	}, w)
+	if err != nil {
+		log.Println(err)
+		w.WriteHeader(http.StatusInternalServerError)
+		_ = response(&JsonResponse{
+			Message: "failed",
+			Error:   err.Error(),
+		}, w)
+		return
+	}
+	fmt.Println("Returned", allUsage, res.URL.Query().Get("year"))
+
+}
+
 	w.Header().Set("Content-Type", "application/json")
 
 	/*	marshal, err := json.Marshal(allUsage)
@@ -32,6 +57,7 @@ func getUsageInfo(w http.ResponseWriter, res *http.Request) {
 
 func httpListener() {
 	http.HandleFunc("/getUsage", getUsageInfo)
+	http.HandleFunc("/getAllUsage", getUsageInfo)
 	err := http.ListenAndServe(":9083", nil)
 	if err != nil {
 		log.Println(err)
