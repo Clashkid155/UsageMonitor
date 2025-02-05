@@ -37,3 +37,21 @@ func httpListener() {
 		log.Println(err)
 	}
 }
+
+// {"message":"Successful",
+// "data":[],
+// "error":"no row"}
+
+type JsonResponse struct {
+	Message string `json:"message"`
+	Data    any    `json:"data,omitempty"`
+	Error   string `json:"error,omitempty"`
+}
+
+func response(jsonRes *JsonResponse, w http.ResponseWriter) error {
+	err := json.NewEncoder(w).Encode(jsonRes)
+	if err != nil {
+		return err
+	}
+	return nil
+}
