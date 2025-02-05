@@ -39,25 +39,52 @@ func getUsageInfo(w http.ResponseWriter, res *http.Request) {
 
 }
 
+func getUsageByDate(w http.ResponseWriter, res *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	/*	marshal, err := json.Marshal(allUsage)
-		if err != nil {
-			http.Error(w, "Error marshalling usage", http.StatusInternalServerError)
-		}
-		fmt.Println(string(marshal))*/
-	err = json.NewEncoder(w).Encode(allUsage)
+	year := res.URL.Query().Get("year")
+	if year == "" {
+		w.WriteHeader(http.StatusForbidden)
+		_ = response(&JsonResponse{
+			Message: "failed",
+			Error:   "missing year parameter",
+		}, w)
+
+		return
+	}
+	allUsage, err := usageTracker.GetUsageByDate(sqlDb, year)
 	if err != nil {
 		log.Println(err)
-		http.Error(w, "Error converting usage", http.StatusInternalServerError)
+		w.WriteHeader(http.StatusInternalServerError)
+		_ = response(&JsonResponse{
+			Message: "failed",
+			Error:   err.Error(),
+		}, w)
+		// http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// err = json.NewEncoder(w).Encode(allUsage)
+	err = response(&JsonResponse{
+		Message: "success",
+		Data:    allUsage,
+	}, w)
+	if err != nil {
+		log.Println(err)
+		w.WriteHeader(http.StatusInternalServerError)
+		_ = response(&JsonResponse{
+			Message: "failed",
+			Error:   err.Error(),
+		}, w)
+		return
 	}
 	fmt.Println("Returned", allUsage, res.URL.Query().Get("year"))
 
 }
 
 func httpListener() {
-	http.HandleFunc("/getUsage", getUsageInfo)
 	http.HandleFunc("/getAllUsage", getUsageInfo)
+	http.HandleFunc("/getUsageByDate", getUsageByDate)
 	err := http.ListenAndServe(":9083", nil)
 	if err != nil {
 		log.Println(err)
