@@ -11,8 +11,7 @@ import (
 
 type (
 	NetworkInfo struct {
-		Nm gonetworkmanager.NetworkManager
-		// Usage             Usage
+		Nm                gonetworkmanager.NetworkManager
 		WifiInterfaceName string
 	}
 
@@ -48,14 +47,12 @@ func (u Usage) String() string {
 func (network *NetworkInfo) GetWifiDevice() (string, error) {
 	devices, err := network.Nm.GetPropertyDevices()
 	if err != nil {
-		log.Println(err)
 		return "", err
 	}
 
 	for _, device := range devices {
 		propertyInterface, err := device.GetPropertyInterface()
 		if err != nil {
-			log.Println(err)
 			return "", err
 		}
 		if strings.HasPrefix(propertyInterface, "wl") {
@@ -70,18 +67,15 @@ func (network *NetworkInfo) GetWifiUsage() (Usage, error) {
 	var usage Usage
 	wifiDevice, err := network.GetWifiDevice()
 	if err != nil {
-		log.Println(err)
 		return usage, err
 	}
 	wifiInterface, err := network.Nm.GetDeviceByIpIface(wifiDevice)
 	if err != nil {
-		log.Println(err)
 		return usage, err
 	}
 
 	deviceStatistics, err := gonetworkmanager.NewDeviceStatistics(wifiInterface.GetPath())
 	if err != nil {
-		log.Println(err)
 		return usage, err
 	}
 
@@ -93,7 +87,6 @@ func (network *NetworkInfo) GetWifiUsage() (Usage, error) {
 
 	uploadBytes, err := deviceStatistics.GetPropertyTxBytes()
 	if err != nil {
-		log.Println(err)
 		return usage, err
 	}
 
@@ -102,13 +95,10 @@ func (network *NetworkInfo) GetWifiUsage() (Usage, error) {
 		return usage, err
 	}
 
-	fmt.Printf("Download Bytes: %d\nUpload Bytes: %d\n", downloadBytes, uploadBytes)
 	usage.SSID = wifiName
 	usage.Download = downloadBytes
 	usage.Upload = uploadBytes
 	usage.TotalUsage = downloadBytes + uploadBytes
-	fmt.Println("Total Usage:", humanize.IBytes(usage.TotalUsage))
-	fmt.Printf("Network Info: %+v\n", network)
 	return usage, nil
 
 }
@@ -117,20 +107,16 @@ func (network *NetworkInfo) GetWifiUsage() (Usage, error) {
 func (network *NetworkInfo) GetWifiName() (string, error) {
 	wifiDevice, err := network.Nm.GetDeviceByIpIface(network.WifiInterfaceName)
 	if err != nil {
-		log.Println(err)
 		return "", err
 	}
 	propertyAvailableConnections, err := wifiDevice.GetPropertyActiveConnection()
 	if err != nil {
-		log.Println(err)
 		return "", err
 	}
 
 	ssid, err := propertyAvailableConnections.GetPropertyID()
 	if err != nil {
-		log.Println(err)
 		return "", err
 	}
-	// network.Usage.SSID = ssid
 	return ssid, nil
 }
