@@ -1,12 +1,14 @@
 ## Usage Monitor
 
-Monitor your Wi-Fi usage on linux (only).
+Track and monitor Wi-Fi usage throughout the day, logging data usage for each network accessed.
+
 
 ### Requirement:
 - Network Manager
 - Dbus
+- Linux
 
-For this app to work, you need to have **Network Manager** and **Dbus** installed
+For this program to work, you need to have **Network Manager** and **Dbus** installed.
 
 
 ### Installation
@@ -32,5 +34,20 @@ go build -o usageMonitor
 ### Autostart
 I prefer using systemd to autostart, so here's an example systemd service file.
 
+```
+[Unit]
+Description=Wifi Usage Monitor
+After=network.target NetworkManager.service
+FailureAction=reboot
+
+[Service]
+Type=exec
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/env php /path/to/server.php
+
+[Install]
+WantedBy=multi-user.target
+```
 **...To be continued**
 
