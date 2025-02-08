@@ -9,22 +9,36 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"syscall"
 	"time"
 )
 
-var sqlDb *sql.DB
-var deviceNetworkInfo usageTracker.NetworkInfo
-var currentSession *usageTracker.WifiSession
+var (
+	sqlDb             *sql.DB
+	deviceNetworkInfo usageTracker.NetworkInfo
+	currentSession    *usageTracker.WifiSession
+	configPath        string
+)
 
 func init() {
 	var err error
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
+	configPath, err = os.UserConfigDir()
+	if err != nil {
+		log.Fatal(err)
+	}
+	configPath = filepath.Join(configPath, "Usage Monitor")
+	err = os.MkdirAll(configPath, 0750)
+	if err != nil {
+		log.Fatalln(fmt.Errorf("unable to create usage monitor directory: %s", err))
+	}
 	deviceNetworkInfo.Nm, err = gonetworkmanager.NewNetworkManager()
 	if err != nil {
 		log.Fatal(err)
 	}
-	sqlDb, err = sql.Open("sqlite3", "./db.sqlite")
+	sqlDb, err = sql.Open("sqlite3", fmt.Sprintf("file:%s",
+		filepath.Join(configPath, "db.sqlite")))
 	if err != nil {
 		log.Fatal(err)
 	}
