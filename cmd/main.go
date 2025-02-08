@@ -1,11 +1,11 @@
 package main
 
 import (
-	usageTracker "UsageMonitor"
 	"database/sql"
 	"errors"
 	"fmt"
 	"github.com/Wifx/gonetworkmanager/v3"
+	usageTracker "github.com/clashkid155/usage-monitor"
 	"log"
 	"os"
 	"os/signal"
@@ -15,24 +15,22 @@ import (
 
 var sqlDb *sql.DB
 var deviceNetworkInfo usageTracker.NetworkInfo
+var currentSession *usageTracker.WifiSession
 
 func init() {
 	var err error
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	deviceNetworkInfo.Nm, err = gonetworkmanager.NewNetworkManager()
 	if err != nil {
-		log.Println(err.Error())
-		os.Exit(1)
+		log.Fatal(err)
 	}
-	sqlDb, err = sql.Open("sqlite3", "./wifi_usage_tracker.sqlite")
+	sqlDb, err = sql.Open("sqlite3", "./db.sqlite")
 	if err != nil {
-		log.Println(err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 	err = usageTracker.CreateTable(sqlDb)
 	if err != nil {
-		log.Println(err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 }
 
@@ -40,26 +38,30 @@ func main() {
 	var err error
 	deviceNetworkInfo.WifiInterfaceName, err = deviceNetworkInfo.GetWifiDevice()
 	if err != nil {
+		log.Println(err)
 		return
 	}
 	wifiName, err := deviceNetworkInfo.GetWifiName()
 	if err != nil {
+		log.Println(err)
 		return
 	}
 	fmt.Println("CONNECTED TO:", wifiName)
+	wifiUsage, err := deviceNetworkInfo.GetWifiUsage()
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	currentSession = &usageTracker.WifiSession{
+		SSID:         wifiUsage.SSID,
+		LastUpload:   wifiUsage.Upload,
+		LastDownload: wifiUsage.Download,
+	}
 
-	/*	ssid, err := usageTracker.GetUsageBySsid(sqlDb, &deviceNetworkInfo.Usage)
-		if err != nil {
-			if errors.Is(err, sql.ErrNoRows) {
-				log.Println(err)
-				// return
-			}
-			log.Println(err)
-		}
-		fmt.Println("Exist sql db:", ssid, "Error:", err) */
 	ch := make(chan os.Signal, 1)
 	signal.Notify(ch, syscall.SIGINT, syscall.SIGTERM, syscall.SIGKILL)
-	RunUntilInterrupt(&deviceNetworkInfo, time.NewTicker(1*time.Minute), ch)
+	go httpListener()
+	RunUntilInterrupt(&deviceNetworkInfo, time.NewTicker(10*time.Second), ch)
 
 }
 
@@ -70,47 +72,69 @@ func SetUsageInDb(usage *usageTracker.Usage) {
 	_, err := usageTracker.GetUsageBySsid(sqlDb, usage)
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
-			err = usageTracker.InsertUsage(sqlDb, usage)
+			err = usageTracker.InsertUsage(sqlDb, &usageTracker.Usage{
+				SSID:     usage.SSID,
+				Download: 0,
+				Upload:   0,
+			})
 			if err != nil {
 				log.Println(err)
 				return
 			}
+			currentSession.SSID = usage.SSID
 		}
 		return
+	}
+	currentSession = &usageTracker.WifiSession{
+		SSID:         usage.SSID,
+		LastUpload:   usage.Upload,
+		LastDownload: usage.Download,
 	}
 }
 
 // RefreshDbUsage Should run periodically to query the
 // system usage and set in the database.
 func RefreshDbUsage(network *usageTracker.NetworkInfo) {
+	// System usage
 	usage, err := network.GetWifiUsage()
 	if err != nil {
 		log.Println(err)
 		return
 	}
-
+	// Usage based on current ssid from the db
 	usageBySsid, err := usageTracker.GetUsageBySsid(sqlDb, &usage)
 
-	if err != nil && !errors.Is(err, sql.ErrNoRows) {
-		log.Println(err)
-	}
 	if errors.Is(err, sql.ErrNoRows) {
-		err = usageTracker.InsertUsage(sqlDb, &usage)
+		err = usageTracker.InsertUsage(sqlDb, &usageTracker.Usage{
+			SSID: usage.SSID,
+		})
+		if err != nil {
+			log.Println("RefreshDbUsage Insert Usage Error:", err)
+			return
+		}
+		return
+	} else if err != nil {
+		log.Println(err)
+		return
+	}
+
+	downloadUsage := usage.Download - currentSession.LastDownload + usageBySsid.Download
+	uploadUsage := usage.Upload - currentSession.LastUpload + usageBySsid.Upload
+
+	if usageBySsid.SSID == usage.SSID {
+		err = usageTracker.UpdateUsage(sqlDb, &usageTracker.Usage{
+			SSID:     usage.SSID,
+			Download: downloadUsage,
+			Upload:   uploadUsage,
+		})
 		if err != nil {
 			log.Println(err)
 			return
 		}
 	}
 
-	if usageBySsid.SSID == usage.SSID {
-		/*usageBySsid.Upload += usage.Upload
-		usageBySsid.Download += usage.Download*/
-		err = usageTracker.UpdateUsage(sqlDb, &usage)
-		if err != nil {
-			log.Println(err)
-			return
-		}
-	}
+	currentSession.LastDownload = usage.Download
+	currentSession.LastUpload = usage.Upload
 }
 
 // RunUntilInterrupt Keep running until an error occurs or a system interrupt is sent.
@@ -118,10 +142,10 @@ func RunUntilInterrupt(network *usageTracker.NetworkInfo, ticker *time.Ticker, e
 	for {
 		select {
 		case <-exit:
-			fmt.Println("\nKilling WiFi Usage Monitor...")
 			network.Nm.Unsubscribe()
 			ticker.Stop()
 			close(exit)
+			fmt.Println("\nExiting Usage Monitor...")
 			return
 
 		case <-ticker.C:
@@ -131,7 +155,6 @@ func RunUntilInterrupt(network *usageTracker.NetworkInfo, ticker *time.Ticker, e
 			}
 
 			if nmState == gonetworkmanager.NmStateConnectedGlobal {
-				fmt.Println("It ran after 10 minutes.")
 				RefreshDbUsage(network)
 			}
 		case sub := <-network.Nm.Subscribe():
@@ -152,7 +175,6 @@ func RunUntilInterrupt(network *usageTracker.NetworkInfo, ticker *time.Ticker, e
 				if err != nil {
 					log.Println(err)
 				}
-
 				SetUsageInDb(&wifiUsage)
 
 			}

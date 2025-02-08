@@ -30,18 +30,12 @@ type (
 )
 
 func (u Usage) String() string {
-	// marshal, err := json.Marshal(u)
 	var usage strings.Builder
 
 	usage.WriteString(fmt.Sprintf("{SSID: %s, Download: %s, Upload: %s, TotalUsage: %s}",
 		u.SSID, humanize.Bytes(u.Download), humanize.Bytes(u.Upload), humanize.Bytes(u.TotalUsage)))
-	/*if err != nil {
-		log.Println(err)
-	}*/
 	return usage.String()
 }
-
-// var DeviceNetworkInfo NetworkInfo
 
 // GetWifiDevice The name of the available Wi-Fi card/device/interface
 func (network *NetworkInfo) GetWifiDevice() (string, error) {

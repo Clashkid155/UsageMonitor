@@ -2,13 +2,12 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/clashkid155/usage-monitor"
 	"log"
 	"net/http"
 )
 
-func getUsageInfo(w http.ResponseWriter, res *http.Request) {
+func getUsageInfo(w http.ResponseWriter, _ *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	allUsage, err := usageTracker.GetAllUsage(sqlDb)
 	if err != nil {
@@ -35,7 +34,6 @@ func getUsageInfo(w http.ResponseWriter, res *http.Request) {
 		}, w)
 		return
 	}
-	fmt.Println("Returned", allUsage, res.URL.Query().Get("year"))
 
 }
 
@@ -60,11 +58,9 @@ func getUsageByDate(w http.ResponseWriter, res *http.Request) {
 			Message: "failed",
 			Error:   err.Error(),
 		}, w)
-		// http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	// err = json.NewEncoder(w).Encode(allUsage)
 	err = response(&JsonResponse{
 		Message: "success",
 		Data:    allUsage,
@@ -78,7 +74,6 @@ func getUsageByDate(w http.ResponseWriter, res *http.Request) {
 		}, w)
 		return
 	}
-	fmt.Println("Returned", allUsage, res.URL.Query().Get("year"))
 
 }
 
@@ -90,10 +85,6 @@ func httpListener() {
 		log.Println(err)
 	}
 }
-
-// {"message":"Successful",
-// "data":[],
-// "error":"no row"}
 
 type JsonResponse struct {
 	Message string `json:"message"`

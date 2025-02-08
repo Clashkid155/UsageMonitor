@@ -7,21 +7,6 @@ import (
 	"time"
 )
 
-/*type sqlDatabase struct {
-	*sql.DB
-}*/
-
-/*func (db *sqlDatabase) CreateDB() error {
-	var err error
-	db.DB, err = sql.Open("sqlite3", "./wifi_usage_tracker.db")
-	if err != nil {
-		log.Println(err)
-		return err
-	}
-
-	return nil
-}*/
-
 // CreateTable Create the database table if it doesn't exist.
 func CreateTable(db *sql.DB) error {
 	const tableQuery = `create table if not exists wifi_usage
@@ -122,7 +107,6 @@ func GetUsageByDate(db *sql.DB, date string) ([]Usage, error) {
 		if err = rows.Scan(&localUsage.Date, &localUsage.SSID, &localUsage.Upload, &localUsage.Download); err != nil {
 			return nil, err
 		}
-		fmt.Println("All db date:", localUsage.Date)
 		localUsage.TotalUsage = localUsage.Upload + localUsage.Download
 		dbUsage = append(dbUsage, localUsage)
 	}
