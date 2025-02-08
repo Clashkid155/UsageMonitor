@@ -1,0 +1,13 @@
+[Unit]
+Description=Wifi Usage Monitor
+After=network.target NetworkManager.service
+FailureAction=reboot
+
+[Service]
+Type=exec
+Restart=always
+RestartSec=1
+ExecStart=/path/to/executable
+
+[Install]
+WantedBy=multi-user.target
