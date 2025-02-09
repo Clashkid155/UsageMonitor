@@ -37,15 +37,14 @@ I prefer using systemd to autostart, so here's an example systemd service file.
 ```
 [Unit]
 Description=Wifi Usage Monitor
-After=network.target NetworkManager.service
+After= NetworkManager.service
+Requires=NetworkManager.service
 
 [Service]
 Type=exec
 Restart=on-failure
 RestartSec=5
 ExecStart=/path/to/executable
-Environment="HOME=%h"
-Environment="XDG_CONFIG_HOME=%h/.config"
 
 [Install]
 WantedBy=multi-user.target
