@@ -6,7 +6,9 @@ import (
 	"github.com/Wifx/gonetworkmanager/v3"
 	"github.com/dustin/go-humanize"
 	"log"
+	"net"
 	"strings"
+	"time"
 )
 
 type (
@@ -37,29 +39,33 @@ func (u Usage) String() string {
 	return usage.String()
 }
 
-// GetWifiDevice The name of the available Wi-Fi card/device/interface
-func (network *NetworkInfo) GetWifiDevice() (string, error) {
-	devices, err := network.Nm.GetPropertyDevices()
+// GetWifiInterfaceName The name of Wi-Fi interface.
+func GetWifiInterfaceName() (string, error) {
+	interfaces, err := net.Interfaces()
 	if err != nil {
-		return "", err
-	}
-
-	for _, device := range devices {
-		propertyInterface, err := device.GetPropertyInterface()
+		for range 5 {
+			interfaces, err = net.Interfaces()
+			if err == nil {
+				break
+			}
+			time.Sleep(1000 * time.Millisecond)
+		}
 		if err != nil {
 			return "", err
 		}
-		if strings.HasPrefix(propertyInterface, "wl") {
-			return propertyInterface, nil
+	}
+	for _, i := range interfaces {
+		if strings.HasPrefix(i.Name, "wl") {
+			return i.Name, nil
 		}
 	}
-	return "", errors.New("no Wi-Fi device found")
+	return "", errors.New("wifi interface not found")
 }
 
 // GetWifiUsage Get the current Wi-Fi usage from the system
 func (network *NetworkInfo) GetWifiUsage() (Usage, error) {
 	var usage Usage
-	wifiDevice, err := network.GetWifiDevice()
+	wifiDevice, err := GetWifiInterfaceName()
 	if err != nil {
 		return usage, err
 	}

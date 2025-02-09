@@ -33,6 +33,7 @@ func init() {
 	if err != nil {
 		log.Fatalln(fmt.Errorf("unable to create usage monitor directory: %s", err))
 	}
+
 	deviceNetworkInfo.Nm, err = gonetworkmanager.NewNetworkManager()
 	if err != nil {
 		log.Fatal(err)
@@ -52,7 +53,7 @@ func init() {
 
 func main() {
 	var err error
-	deviceNetworkInfo.WifiInterfaceName, err = deviceNetworkInfo.GetWifiDevice()
+	deviceNetworkInfo.WifiInterfaceName, err = usageTracker.GetWifiInterfaceName()
 	if err != nil {
 		log.Println(err)
 		return
