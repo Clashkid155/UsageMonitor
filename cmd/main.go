@@ -37,6 +37,8 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("db location:", fmt.Sprintf("file:%s",
+		filepath.Join(configPath, "db.sqlite")))
 	sqlDb, err = sql.Open("sqlite3", fmt.Sprintf("file:%s",
 		filepath.Join(configPath, "db.sqlite")))
 	if err != nil {
